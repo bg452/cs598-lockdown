@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 47692632}
   - component: {fileID: 47692631}
   - component: {fileID: 47692630}
+  - component: {fileID: 47692635}
   - component: {fileID: 47692629}
   - component: {fileID: 47692634}
   m_Layer: 0
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 47692628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a86e63d9b87a27f49b41a7063d64bd4a, type: 3}
   m_Name: 
@@ -310,7 +311,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -322,6 +323,18 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &47692635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 47692628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2ab0a0981e7f446ae7e793c61ac989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Civilian1: {fileID: 677385959}
 --- !u!1 &138878644
 GameObject:
   m_ObjectHideFlags: 0
