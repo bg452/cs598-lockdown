@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class levelManager : MonoBehaviour
+public class gameController : MonoBehaviour
 {
     public GameObject gameOverPanel;
-    public Text gameOverText;
 
     public void Awake()
     {
