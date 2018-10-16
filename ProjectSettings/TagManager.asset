@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Civilian
+  - Safety
+  - Enemy
   layers:
   - Default
   - TransparentFX
