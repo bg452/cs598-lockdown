@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour {
     private GameObject[] allCivilians;
+    private List<GameObject> distraction;
+    private GameObject closestDistraction;
 
     // Use this for initialization
     void Start () {
@@ -13,9 +15,27 @@ public class EnemyAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		GetComponent<NavMeshAgent>().destination = findClosestObj(allCivilians).transform.position;
+        distraction = new List<GameObject>(GameObject.FindGameObjectsWithTag("Distraction"));
+        if (distraction.Count != 0 && !detectCollision.hasBeenDistracted) {
+            StartCoroutine("Distracted");
+        } else {
+		    StartCoroutine("Chasing");
+        }
 	}
+
+    IEnumerator Distracted() {
+        closestDistraction = findClosestObj(distraction.ToArray());
+        GetComponent<NavMeshAgent>().destination = closestDistraction.transform.position;
+        distraction.Remove(closestDistraction);
+        yield return new WaitForSeconds(10);
+        detectCollision.hasBeenDistracted = false;
+        closestDistraction.tag = "Expired";
+    }
+
+    IEnumerator Chasing() {
+        GetComponent<NavMeshAgent>().destination = findClosestObj(allCivilians).transform.position;
+        yield return new WaitForEndOfFrame();
+    }
 
 
     GameObject findClosestObj(GameObject[] targetObject)
