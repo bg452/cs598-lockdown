@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Distraction
   - Expired
+  - Safe
   layers:
   - Default
   - TransparentFX

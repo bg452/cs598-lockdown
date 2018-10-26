@@ -46,12 +46,15 @@ public class EnemyAI : MonoBehaviour {
 
         foreach (GameObject obj in targetObject)
         {
-            Vector3 diff = obj.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
+            if (!(obj.tag == "Safe"))
             {
-                closest = obj;
-                distance = curDistance;
+                Vector3 diff = obj.transform.position - position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    closest = obj;
+                    distance = curDistance;
+                }
             }
         }
 

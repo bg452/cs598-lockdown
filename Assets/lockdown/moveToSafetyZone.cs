@@ -26,6 +26,7 @@ public class moveToSafetyZone : MonoBehaviour {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
+ 
 	// Update is called once per frame
 	void Update () {
 
@@ -33,6 +34,8 @@ public class moveToSafetyZone : MonoBehaviour {
         {
             agent.destination = findClosestObj(allSafeZones).transform.position;
             agent.speed = 3.5f;
+            
+
         }
         else
         {
@@ -55,6 +58,13 @@ public class moveToSafetyZone : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Safety")
+        {
+            gameObject.tag = "Safe";
+        }
+    }
     IEnumerator Wander()
     {
         int rotTime = Random.Range(1, 3);
