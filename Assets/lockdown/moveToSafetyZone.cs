@@ -11,11 +11,6 @@ public class moveToSafetyZone : MonoBehaviour {
     private float minDistToEnemy = 20f;
 
     public float moveSpeed = 2.5f;
-    public float rotSpeed = 10f;
-
-    private bool isRotaingLeft = false;
-    private bool isRoatingRight = false;
-    private bool isWalking = false;
 
     private bool isWander = false;
 
@@ -24,38 +19,46 @@ public class moveToSafetyZone : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         allSafeZones = GameObject.FindGameObjectsWithTag("Safety");
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        agent.destination = RandomNavMeshLocation(20f);
     }
 
  
 	// Update is called once per frame
 	void Update () {
-
-        if (seenEnemy())
+        if (agent.tag == "Safe") {
+            agent.isStopped = true;
+        }
+        else if (seenEnemy())
         {
             agent.destination = findClosestObj(allSafeZones).transform.position;
-            agent.speed = 3.5f;
-            
-
+            agent.speed = 3.5f;            
         }
-        else
+        else if (hasReachedDestination())
         {
-            StartCoroutine(Wander());
+            agent.destination = RandomNavMeshLocation(20f);
+        }
+    }
 
-            if (isRoatingRight)
-            {
-                transform.Rotate(transform.up * Time.deltaTime * rotSpeed);
-            }
-
-            if (isRotaingLeft)
-            {
-                transform.Rotate(transform.up * Time.deltaTime * -rotSpeed);
-            }
-
-            if (isWalking)
-            {
-                transform.position += transform.forward * moveSpeed * Time.deltaTime;
+    bool hasReachedDestination() {
+        if (!agent.pathPending) {
+            if (agent.remainingDistance <= agent.stoppingDistance) {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f) {
+                    return true;
+                }
             }
         }
+        return false;
+    }
+
+    public Vector3 RandomNavMeshLocation(float radius) {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1)) {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -63,33 +66,6 @@ public class moveToSafetyZone : MonoBehaviour {
         if (collision.gameObject.tag == "Safety")
         {
             gameObject.tag = "Safe";
-        }
-    }
-    IEnumerator Wander()
-    {
-        int rotTime = Random.Range(1, 3);
-        int rotWait = Random.Range(1, 4);
-        int rotateLorR = Random.Range(1, 2);
-        int walkWait = Random.Range(1, 4);
-        int walkTime = Random.Range(1, 5);
-
-        yield return new WaitForSeconds(walkWait);
-        isWalking = true;
-        yield return new WaitForSeconds(walkTime);
-        isWalking = false;
-        yield return new WaitForSeconds(rotWait);
-
-        if (rotateLorR == 1)
-        {
-            isRoatingRight = true;
-            yield return new WaitForSeconds(rotTime);
-            isRotaingLeft = false;
-        }
-        if (rotateLorR == 2)
-        {
-            isRotaingLeft = true;
-            yield return new WaitForSeconds(rotTime);
-            isRoatingRight = false;
         }
     }
 
