@@ -12,8 +12,6 @@ public class moveToSafetyZone : MonoBehaviour {
 
     public float moveSpeed = 2.5f;
 
-    private bool isWander = false;
-
     // Use this for initialization
     void Start(){
         agent = GetComponent<NavMeshAgent>();
