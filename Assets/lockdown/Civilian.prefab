@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114034682420796780}
   - component: {fileID: 54091670513096842}
   - component: {fileID: 114161976597631234}
+  - component: {fileID: 114848330693540410}
   m_Layer: 0
   m_Name: Civilian
   m_TagString: Civilian
@@ -126,6 +127,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+--- !u!114 &114848330693540410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199349438928620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d764ac1addebf94a9d573feb704ebad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135727982149210308
 SphereCollider:
   m_ObjectHideFlags: 1
