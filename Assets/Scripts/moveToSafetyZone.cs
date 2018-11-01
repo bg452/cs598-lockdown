@@ -29,7 +29,7 @@ public class moveToSafetyZone : MonoBehaviour {
         else if (seenEnemy())
         {
             agent.destination = findClosestObj(allSafeZones).transform.position;
-            agent.speed = 3.5f;            
+            panic();
         }
         else if (hasReachedDestination())
         {
@@ -98,5 +98,14 @@ public class moveToSafetyZone : MonoBehaviour {
         }
 
         return closest;
+    }
+
+    void panic()
+    {
+        // change speed
+        agent.speed = 3.75f;
+        // change color
+        Renderer rend = agent.GetComponent<Renderer>();
+        rend.material.color = new Color32(102, 51, 153, 0);
     }
 }
