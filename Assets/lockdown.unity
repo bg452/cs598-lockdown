@@ -198,6 +198,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 47464599}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &67078385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67078386}
+  m_Layer: 0
+  m_Name: Civilians
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67078386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67078385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2113922322}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &138878644
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b969f5759de12ec49b4c32a253f67b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1367926234384630, guid: 29510ae389227ea40b6c05d5ba1cde5e, type: 2}
 --- !u!4 &556841795
 Transform:
   m_ObjectHideFlags: 0
@@ -1204,7 +1231,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7c6faed37a5e84a94aa60c2eb61dd263, type: 2}
+  - {fileID: 2100000, guid: d44be2b519ce3ef448641bcdacd6d995, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1656,6 +1683,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1084946058}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1095224924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1095224925}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1095224925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1095224924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2113922322}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120055024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,7 +2146,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1598549020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 0.15, z: 15}
+  m_LocalPosition: {x: -5, y: 0.15, z: 17.19}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 256946317}
@@ -2697,8 +2752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b04f82de35a4a54fbd03179c48cbe9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1964477172626136, guid: d3728d43f04340b498bc23bcb0bbf83b, type: 2}
-  civilians: {fileID: 1199349438928620, guid: 2a13d8435f49efd4e962a39a1ae379d3, type: 2}
+  enemyPrefab: {fileID: 1964477172626136, guid: d3728d43f04340b498bc23bcb0bbf83b,
+    type: 2}
+  civilianPrefab: {fileID: 1199349438928620, guid: 2a13d8435f49efd4e962a39a1ae379d3,
+    type: 2}
 --- !u!4 &2113922322
 Transform:
   m_ObjectHideFlags: 0
@@ -2708,7 +2765,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 56.5, y: 1, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 67078386}
+  - {fileID: 1095224925}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

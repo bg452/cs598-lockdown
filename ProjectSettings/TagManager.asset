@@ -11,6 +11,9 @@ TagManager:
   - Expired
   - Safe
   - UpSign
+  - DownSign
+  - LeftSign
+  - RightSign
   layers:
   - Default
   - TransparentFX
