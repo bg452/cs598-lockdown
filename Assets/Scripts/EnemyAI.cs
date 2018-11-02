@@ -7,10 +7,12 @@ public class EnemyAI : MonoBehaviour {
     private GameObject[] allCivilians;
     private List<GameObject> distraction;
     private GameObject closestDistraction;
+    public static bool playerWin;
 
     // Use this for initialization
     void Start () {
-        
+        playerWin = false;
+        allCivilians = GameObject.FindGameObjectsWithTag("Civilian");
     }
 	
 	// Update is called once per frame
@@ -24,6 +26,7 @@ public class EnemyAI : MonoBehaviour {
         } else {
             // All civilians are safe
             GetComponent<NavMeshAgent>().isStopped = true;
+            playerWin = true;
         }
 	}
 

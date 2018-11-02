@@ -8,7 +8,7 @@ public class initAgents : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject civilianPrefab;
     private int numEnemy = 2;
-    private int numCivilians = 11;
+    private int numCivilians = 12;
 
     private float x;
     private float y = 1;

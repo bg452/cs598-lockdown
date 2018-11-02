@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class detectCollision : MonoBehaviour
 {
-    public static bool hasCollision = false;
-    public static bool hasBeenDistracted = false;
+    public static bool hasCollision;
+    public static bool hasBeenDistracted;
+
+    private void Awake() {
+        hasCollision = false;
+        hasBeenDistracted = false;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
