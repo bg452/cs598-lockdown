@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | cs598-lockdown</title>
+    <title>Unity WebGL Player | Lockdown</title>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/custom.min.css" media="screen,projection" />
+    <!--Unity Stuff-->
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <script src="TemplateData/UnityProgress.js"></script>  
@@ -13,6 +17,30 @@
     </script>
   </head>
   <body>
+      <header>        
+        <ul id="slide-out" class="side-nav fixed blue darken-2 z-depth-2 white-text">
+          <div class="container">
+              <h2>Instructions</h2>
+              <p>
+                In this game your goal is to guide the blue civilian agents toward the green safety zones, 
+                while keeping them away from the red hostile agents. If an enemy comes into contact with a civilian, it's game over.
+                You can place distraction cubes by left-clicking which will get the enemies' attention for a brief duration, or until they reach it.
+                Additionally, using the WASD keys, you can place arrow signs on the ground which signal nearby civilians to proceed in the specified direction.
+              </p>
+              <h2>Controls</h2>
+              <ul>
+                <li>W - places UP sign at cursor location</li>
+                <li>A - places LEFT sign at cursor location</li>
+                <li>S - places DOWN sign at cursor location</li>
+                <li>D - places RIGHT sign at cursor location</li>
+                <li>Left click - places DISTRACTION at cursor location</li>
+              </ul>
+          </div>              
+        </ul>
+        <a href="#" data-activates="slide-out" class="mobile-nav button-collapse hide-on-large-only z-depth-2">
+          <i class="material-icons white-text">menu</i>
+        </a>
+      </header>
     <div class="webgl-content">
       <div id="gameContainer" style="width: 960px; height: 600px"></div>
       <div class="footer">
