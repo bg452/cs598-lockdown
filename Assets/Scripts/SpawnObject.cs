@@ -5,6 +5,11 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour {
 	private GameObject prefab;
 
+    // Counts to limit how many of each object can be spawned
+    public int alarmCount = 0;
+    public int signCount = 0;
+    public int distractionCount = 0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,23 +18,41 @@ public class SpawnObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
-            prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
-            SpawnPrefab(prefab);
+            if (distractionCount < 5) {
+                prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
+                SpawnPrefab(prefab);
+            }
+            distractionCount++;
         } else if (Input.GetMouseButtonDown(1)) {
-            prefab = (GameObject)Resources.Load("Prefabs/Alarm");
-            SpawnPrefab(prefab);
+            if (alarmCount < 1) {
+                prefab = (GameObject)Resources.Load("Prefabs/Alarm");
+                SpawnPrefab(prefab);
+            }
+            alarmCount++;
         } else if (Input.GetKeyDown(KeyCode.W)) {
-            prefab = (GameObject)Resources.Load("Prefabs/UpSign");
-            SpawnSign(prefab, 'W');
+            if (signCount < 5) {
+                prefab = (GameObject)Resources.Load("Prefabs/UpSign");
+                SpawnSign(prefab, 'W');
+            }
+            signCount++;
         } else if (Input.GetKeyDown(KeyCode.A)) {
-            prefab = (GameObject)Resources.Load("Prefabs/LeftSign");
-            SpawnSign(prefab, 'A');
+            if (signCount < 5) {
+                prefab = (GameObject)Resources.Load("Prefabs/LeftSign");
+                SpawnSign(prefab, 'A');
+            }
+            signCount++;
         } else if (Input.GetKeyDown(KeyCode.S)) {
-            prefab = (GameObject)Resources.Load("Prefabs/DownSign");
-            SpawnSign(prefab, 'S');
+            if (signCount < 5) {
+                prefab = (GameObject)Resources.Load("Prefabs/DownSign");
+                SpawnSign(prefab, 'S');
+            }
+            signCount++;
         } else if (Input.GetKeyDown(KeyCode.D)) {
-            prefab = (GameObject)Resources.Load("Prefabs/RightSign");
-            SpawnSign(prefab, 'D');
+            if (signCount < 5) {
+                prefab = (GameObject)Resources.Load("Prefabs/RightSign");
+                SpawnSign(prefab, 'D');
+            }
+            signCount++;
         } else {
             // do nothing
         }

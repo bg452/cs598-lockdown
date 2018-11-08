@@ -18,7 +18,6 @@ public class AlarmTrigger : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Civilian") {
             other.GetComponent<moveToSafetyZone>().panic();
-            Debug.Log("alarm trigger activated: civilian should panic!");
         }
     }
 }
