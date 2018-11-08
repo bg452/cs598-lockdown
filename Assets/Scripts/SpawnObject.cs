@@ -15,6 +15,9 @@ public class SpawnObject : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
             prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
             SpawnPrefab(prefab);
+        } else if (Input.GetMouseButtonDown(1)) {
+            prefab = (GameObject)Resources.Load("Prefabs/Alarm");
+            SpawnPrefab(prefab);
         } else if (Input.GetKeyDown(KeyCode.W)) {
             prefab = (GameObject)Resources.Load("Prefabs/UpSign");
             SpawnSign(prefab, 'W');
@@ -38,6 +41,7 @@ public class SpawnObject : MonoBehaviour {
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
             Vector3 editedHitPoint = hit.point;
+            editedHitPoint.y = 1.5f;
             Instantiate(prefab, editedHitPoint, hit.transform.rotation);
             Debug.Log(hit.point);
         }
