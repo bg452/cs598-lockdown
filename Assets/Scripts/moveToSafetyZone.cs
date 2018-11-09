@@ -17,7 +17,7 @@ public class moveToSafetyZone : MonoBehaviour {
     public float moveSpeed = 2.5f;
 
     // Use this for initialization
-    void Start() {
+    void Start(){
         agent = GetComponent<NavMeshAgent>();
         allSafeZones = GameObject.FindGameObjectsWithTag("Safety");
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -26,7 +26,6 @@ public class moveToSafetyZone : MonoBehaviour {
 
  
 	// Update is called once per frame
-<<<<<<< HEAD
 	void Update () {
 
         
@@ -44,16 +43,16 @@ public class moveToSafetyZone : MonoBehaviour {
                 gameObject.tag = "Safe";
             }
         }
-=======
-	void Update() {
->>>>>>> 28aa5f152da7665ecb3c93e65ffd664777021527
         if (agent.tag == "Safe") {
             agent.isStopped = true;
         }
-        else if (seenEnemy()) {
+        else if (seenEnemy())
+        {
+            agent.destination = findClosestObj(allSafeZones).transform.position;
             panic();
         }
-        else if (hasReachedDestination()) {
+        else if (hasReachedDestination())
+        {
             agent.destination = RandomNavMeshLocation(20f);
         }
     }
@@ -79,7 +78,6 @@ public class moveToSafetyZone : MonoBehaviour {
         }
         return finalPosition;
     }
-<<<<<<< HEAD
     /*
     void OnCollisionEnter(Collision collision)
     {
@@ -91,35 +89,29 @@ public class moveToSafetyZone : MonoBehaviour {
     */
     bool seenEnemy()
     {
-=======
-
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Safety") {
-            gameObject.tag = "Safe";
-        }
-    }
-
-    bool seenEnemy() {
->>>>>>> 28aa5f152da7665ecb3c93e65ffd664777021527
         bool retVal = false;
         GameObject closestEnemy = findClosestObj(allEnemies);
         float currDistToEnemy = (closestEnemy.transform.position - agent.transform.position).sqrMagnitude;
-        if (currDistToEnemy <= minDistToEnemy) {
+        if (currDistToEnemy <= minDistToEnemy)
+        {
             retVal = true;
         }
 
         return retVal;
     }
 
-    GameObject findClosestObj(GameObject[] targetObject) {
+    GameObject findClosestObj(GameObject[] targetObject)
+    {
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
 
-        foreach (GameObject obj in targetObject) {
+        foreach (GameObject obj in targetObject)
+        {
             Vector3 diff = obj.transform.position - position;
             float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance) {
+            if (curDistance < distance)
+            {
                 closest = obj;
                 distance = curDistance;
             }
@@ -128,13 +120,12 @@ public class moveToSafetyZone : MonoBehaviour {
         return closest;
     }
 
-    public void panic() {
+    public void panic()
+    {
         // change speed
         agent.speed = 3.75f;
         // change color
         Renderer rend = agent.GetComponent<Renderer>();
         rend.material.color = new Color32(102, 51, 153, 0);
-        // set destination to nearest safe zone
-        agent.destination = findClosestObj(allSafeZones).transform.position;
     }
 }
