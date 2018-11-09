@@ -7,8 +7,8 @@ public class initAgents : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject civilianPrefab;
-    private int numEnemy = 2;
-    private int numCivilians = 12;
+    public int numEnemy = 2;
+    public int numCivilians = 12;
 
     private Vector3[] enemy_pos = new[] { new Vector3(14, 1, -3), new Vector3(57, 1, -22),
         new Vector3(44, 1, 22), new Vector3(27, 1, 5) };

@@ -18,6 +18,6 @@ public class startScene : MonoBehaviour {
     public void startGame()
     {
         GameObject.Find("StartGameButton").SetActive(false);
-        SceneManager.LoadScene("lockdown");
+        SceneManager.LoadScene(1);
     }
 }
