@@ -5,11 +5,6 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour {
 	private GameObject prefab;
 
-    // Counts to limit how many of each object can be spawned
-    public int alarmCount = 0;
-    public int signCount = 0;
-    public int distractionCount = 0;
-
 	// Use this for initialization
 	void Start () {
 		
@@ -18,41 +13,20 @@ public class SpawnObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
-            if (distractionCount < 5) {
-                prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
-                SpawnPrefab(prefab);
-            }
-            distractionCount++;
-        } else if (Input.GetMouseButtonDown(1)) {
-            if (alarmCount < 1) {
-                prefab = (GameObject)Resources.Load("Prefabs/Alarm");
-                SpawnPrefab(prefab);
-            }
-            alarmCount++;
+            prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
+            SpawnPrefab(prefab);
         } else if (Input.GetKeyDown(KeyCode.W)) {
-            if (signCount < 5) {
-                prefab = (GameObject)Resources.Load("Prefabs/UpSign");
-                SpawnSign(prefab, 'W');
-            }
-            signCount++;
+            prefab = (GameObject)Resources.Load("Prefabs/UpSign");
+            SpawnSign(prefab, 'W');
         } else if (Input.GetKeyDown(KeyCode.A)) {
-            if (signCount < 5) {
-                prefab = (GameObject)Resources.Load("Prefabs/LeftSign");
-                SpawnSign(prefab, 'A');
-            }
-            signCount++;
+            prefab = (GameObject)Resources.Load("Prefabs/LeftSign");
+            SpawnSign(prefab, 'A');
         } else if (Input.GetKeyDown(KeyCode.S)) {
-            if (signCount < 5) {
-                prefab = (GameObject)Resources.Load("Prefabs/DownSign");
-                SpawnSign(prefab, 'S');
-            }
-            signCount++;
+            prefab = (GameObject)Resources.Load("Prefabs/DownSign");
+            SpawnSign(prefab, 'S');
         } else if (Input.GetKeyDown(KeyCode.D)) {
-            if (signCount < 5) {
-                prefab = (GameObject)Resources.Load("Prefabs/RightSign");
-                SpawnSign(prefab, 'D');
-            }
-            signCount++;
+            prefab = (GameObject)Resources.Load("Prefabs/RightSign");
+            SpawnSign(prefab, 'D');
         } else {
             // do nothing
         }
@@ -64,7 +38,6 @@ public class SpawnObject : MonoBehaviour {
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
             Vector3 editedHitPoint = hit.point;
-            editedHitPoint.y = 1.5f;
             Instantiate(prefab, editedHitPoint, hit.transform.rotation);
             Debug.Log(hit.point);
         }

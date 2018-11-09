@@ -8,6 +8,10 @@ public class moveToSafetyZone : MonoBehaviour {
     private GameObject[] allSafeZones;
     private GameObject[] allEnemies;
 
+    private RaycastHit hit;
+    private float dist = 10;
+    private Vector3 dir = new Vector3(0,-1,0);
+
     private float minDistToEnemy = 20f;
 
     public float moveSpeed = 2.5f;
@@ -22,7 +26,27 @@ public class moveToSafetyZone : MonoBehaviour {
 
  
 	// Update is called once per frame
+<<<<<<< HEAD
+	void Update () {
+
+        
+        
+        Debug.DrawRay(transform.position, dir * dist, Color.green);
+
+
+        if (Physics.Raycast(transform.position, dir, out hit, dist,1<<9))
+        {
+           
+
+            if (hit.collider.gameObject.tag == "Safety")
+            {
+                Debug.Log("hit");
+                gameObject.tag = "Safe";
+            }
+        }
+=======
 	void Update() {
+>>>>>>> 28aa5f152da7665ecb3c93e65ffd664777021527
         if (agent.tag == "Safe") {
             agent.isStopped = true;
         }
@@ -55,6 +79,19 @@ public class moveToSafetyZone : MonoBehaviour {
         }
         return finalPosition;
     }
+<<<<<<< HEAD
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Safety")
+        {
+            gameObject.tag = "Safe";
+        }
+    }
+    */
+    bool seenEnemy()
+    {
+=======
 
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Safety") {
@@ -63,6 +100,7 @@ public class moveToSafetyZone : MonoBehaviour {
     }
 
     bool seenEnemy() {
+>>>>>>> 28aa5f152da7665ecb3c93e65ffd664777021527
         bool retVal = false;
         GameObject closestEnemy = findClosestObj(allEnemies);
         float currDistToEnemy = (closestEnemy.transform.position - agent.transform.position).sqrMagnitude;

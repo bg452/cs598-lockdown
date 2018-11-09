@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 33261009655244332}
   - component: {fileID: 23291458172824904}
   - component: {fileID: 136735627800892324}
-  - component: {fileID: 114019738371404164}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: RightSign
@@ -174,17 +173,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114019738371404164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1244998894604356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01bcdf9fef7398246afc53c6ded0801c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114117610446700682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,8 +191,8 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1244998894604356}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
+  m_IsTrigger: 0
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1

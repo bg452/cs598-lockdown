@@ -14,7 +14,6 @@ TagManager:
   - DownSign
   - LeftSign
   - RightSign
-  - Alarm
   layers:
   - Default
   - TransparentFX
