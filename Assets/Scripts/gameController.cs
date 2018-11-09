@@ -10,6 +10,8 @@ public class gameController : MonoBehaviour {
 
     public void Start() {
         Time.timeScale = 1;
+        gameOverPanel.SetActive(false);
+        nextLevelPanel.SetActive(false);
     }
 
     private void Update() {
@@ -26,6 +28,7 @@ public class gameController : MonoBehaviour {
         Destroy(GameObject.Find("Spawner"));
         if (!playerWin) {
             gameOverPanel.SetActive(true);
+            GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over!";
         } else if (playerWin && currentBuildIndex < 2) {
             nextLevelPanel.SetActive(true);
         } else {
@@ -36,6 +39,7 @@ public class gameController : MonoBehaviour {
     }
 
     public void LoadNextLevel() {
+        nextLevelPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
