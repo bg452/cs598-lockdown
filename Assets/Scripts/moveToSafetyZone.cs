@@ -8,6 +8,10 @@ public class moveToSafetyZone : MonoBehaviour {
     private GameObject[] allSafeZones;
     private GameObject[] allEnemies;
 
+    private RaycastHit hit;
+    private float dist = 10;
+    private Vector3 dir = new Vector3(0,-1,0);
+
     private float minDistToEnemy = 20f;
 
     public float moveSpeed = 2.5f;
@@ -23,6 +27,22 @@ public class moveToSafetyZone : MonoBehaviour {
  
 	// Update is called once per frame
 	void Update () {
+
+        
+        
+        Debug.DrawRay(transform.position, dir * dist, Color.green);
+
+
+        if (Physics.Raycast(transform.position, dir, out hit, dist,1<<9))
+        {
+           
+
+            if (hit.collider.gameObject.tag == "Safety")
+            {
+                Debug.Log("hit");
+                gameObject.tag = "Safe";
+            }
+        }
         if (agent.tag == "Safe") {
             agent.isStopped = true;
         }
@@ -58,7 +78,7 @@ public class moveToSafetyZone : MonoBehaviour {
         }
         return finalPosition;
     }
-
+    /*
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Safety")
@@ -66,7 +86,7 @@ public class moveToSafetyZone : MonoBehaviour {
             gameObject.tag = "Safe";
         }
     }
-
+    */
     bool seenEnemy()
     {
         bool retVal = false;
