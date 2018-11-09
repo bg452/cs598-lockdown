@@ -10,7 +10,6 @@ public class gameController : MonoBehaviour {
 
     public void Start() {
         Time.timeScale = 1;
-        gameOverPanel.SetActive(false);
     }
 
     private void Update() {
@@ -27,11 +26,11 @@ public class gameController : MonoBehaviour {
         Destroy(GameObject.Find("Spawner"));
         if (!playerWin) {
             gameOverPanel.SetActive(true);
-        }
-        if (playerWin && currentBuildIndex < 2) {
+        } else if (playerWin && currentBuildIndex < 2) {
             nextLevelPanel.SetActive(true);
         } else {
             gameOverPanel.SetActive(true);
+            GameObject.Find("GameOverText").GetComponent<Text>().text = "You win!";
         }
         EnemyAI.playerWin = false;
     }
