@@ -122,6 +122,7 @@ public class moveToSafetyZone : MonoBehaviour {
 
     public void panic()
     {
+        agent.destination = findClosestObj(allSafeZones).transform.position;
         // change speed
         agent.speed = 3.75f;
         // change color

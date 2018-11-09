@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1524873454}
+  nextLevelPanel: {fileID: 0}
 --- !u!4 &137446143
 Transform:
   m_ObjectHideFlags: 0
@@ -903,7 +904,7 @@ GameObject:
   - component: {fileID: 983986261}
   - component: {fileID: 983986260}
   - component: {fileID: 983986259}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Safety Zone (2)
   m_TagString: Safety
   m_Icon: {fileID: 0}
