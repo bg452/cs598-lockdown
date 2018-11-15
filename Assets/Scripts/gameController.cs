@@ -29,11 +29,8 @@ public class gameController : MonoBehaviour {
         if (!playerWin) {
             gameOverPanel.SetActive(true);
             GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over!";
-        } else if (playerWin && currentBuildIndex < 2) {
-            nextLevelPanel.SetActive(true);
         } else {
-            gameOverPanel.SetActive(true);
-            GameObject.Find("GameOverText").GetComponent<Text>().text = "You win!";
+            nextLevelPanel.SetActive(true);
         }
         EnemyAI.playerWin = false;
     }
