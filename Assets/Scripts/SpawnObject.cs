@@ -89,7 +89,7 @@ public class SpawnObject : MonoBehaviour {
 
         if (distractionCount <= maxDistraction)
         {
-            GameObject.Find("StatusDistraction").GetComponent<Text>().text = "Distactions: " + (maxDistraction - distractionCount).ToString();
+            GameObject.Find("StatusDistraction").GetComponent<Text>().text = "Distractions: " + (maxDistraction - distractionCount).ToString();
         }
 
         if (alarmCount <= maxAlarm)
