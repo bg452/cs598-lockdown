@@ -20,4 +20,30 @@ public class startScene : MonoBehaviour {
         GameObject.Find("StartGameButton").SetActive(false);
         SceneManager.LoadScene(1);
     }
+    public void Level1()
+    {
+        GameObject.Find("StartGameButton").SetActive(false);
+        SceneManager.LoadScene(1);
+    }
+    public void Level2()
+    {
+        GameObject.Find("StartGameButton").SetActive(false);
+        SceneManager.LoadScene(2);
+    }
+    public void Level3()
+    {
+        GameObject.Find("StartGameButton").SetActive(false);
+        SceneManager.LoadScene(3);
+    }
+    public void Level4()
+    {
+        GameObject.Find("StartGameButton").SetActive(false);
+        SceneManager.LoadScene(4);
+    }
+    public void Level5()
+    {
+        GameObject.Find("StartGameButton").SetActive(false);
+        SceneManager.LoadScene(5);
+    }
+
 }

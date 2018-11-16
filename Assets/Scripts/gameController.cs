@@ -51,4 +51,11 @@ public class gameController : MonoBehaviour {
         // Restart from level 1
         SceneManager.LoadScene(1);
     }
+    public void LoadMainMenu()
+    {
+        
+        statusPanel.SetActive(false);
+       
+        SceneManager.LoadScene("Start");
+    }
 }
