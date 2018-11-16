@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class lastLevelController : MonoBehaviour
 {
     public GameObject gameOverPanel;
+    public GameObject statusPanel;
 
     public void Start()
     {
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
+        statusPanel.SetActive(true);
         EnemyAI.playerWin = false;
     }
 

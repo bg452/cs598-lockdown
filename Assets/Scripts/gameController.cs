@@ -7,11 +7,13 @@ using UnityEngine.SceneManagement;
 public class gameController : MonoBehaviour {
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
+    public GameObject statusPanel;
 
     public void Start() {
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
         nextLevelPanel.SetActive(false);
+        statusPanel.SetActive(true);
     }
 
     private void Update() {
