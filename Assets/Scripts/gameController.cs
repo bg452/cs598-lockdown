@@ -73,5 +73,9 @@ public class gameController : MonoBehaviour {
         timer.SetActive(true);
         GameObject.Find("TimerText").GetComponent<Text>().text = "Elapsed time: " + minutes + ":" + seconds;
     }
+    public float getTime()
+    {
+        return elapsedTime;
 
+    }
 }

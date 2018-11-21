@@ -39,7 +39,7 @@ public class moveToSafetyZone : MonoBehaviour {
 
             if (hit.collider.gameObject.tag == "Safety")
             {
-                Debug.Log("hit");
+               
                 gameObject.tag = "Safe";
             }
         }

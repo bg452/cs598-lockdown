@@ -2394,6 +2394,8 @@ MonoBehaviour:
   alarmCount: 0
   signCount: 0
   distractionCount: 0
+  actions: []
+  time: []
 --- !u!4 &1877463612
 Transform:
   m_ObjectHideFlags: 0

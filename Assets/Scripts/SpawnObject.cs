@@ -1,34 +1,55 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+ 
 public class SpawnObject : MonoBehaviour {
 	private GameObject prefab;
 
     private int maxDistraction = 5;
     private int maxAlarm = 1;
     private int maxSign = 5;
-
+    private int count = 0;
     // Counts to limit how many of each object can be spawned
     public int alarmCount = 0;
     public int signCount = 0;
     public int distractionCount = 0;
-
+    public string[] actions;
+    public float[] time;
+    private float elapsedTime;
 	// Use this for initialization
 	void Start () {
-		
-	}
+        
+
+    }
+    void Awake()
+    {
+       
+        actions = new string[maxAlarm + maxDistraction + maxSign];
+        time = new float[maxAlarm + maxDistraction + maxSign];
+       
+    }
 
     // Update is called once per frame
     void Update()
     {
+        elapsedTime += Time.deltaTime;
         if (Input.GetMouseButtonDown(0))
         {
             if (distractionCount < maxDistraction)
             {
                 prefab = (GameObject)Resources.Load("Prefabs/DistractionCube");
                 SpawnPrefab(prefab);
+                
+                actions[count] = "distraction";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
+                
+                
             }
             distractionCount++;
         }
@@ -38,6 +59,10 @@ public class SpawnObject : MonoBehaviour {
             {
                 prefab = (GameObject)Resources.Load("Prefabs/Alarm");
                 SpawnPrefab(prefab);
+                actions[count] = "alarm";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
             }
             alarmCount++;
         }
@@ -47,6 +72,10 @@ public class SpawnObject : MonoBehaviour {
             {
                 prefab = (GameObject)Resources.Load("Prefabs/UpSign");
                 SpawnSign(prefab, 'W');
+                actions[count] = "upArrow";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
             }
             signCount++;
         }
@@ -56,6 +85,10 @@ public class SpawnObject : MonoBehaviour {
             {
                 prefab = (GameObject)Resources.Load("Prefabs/LeftSign");
                 SpawnSign(prefab, 'A');
+                actions[count] = "leftArrow";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
             }
             signCount++;
         }
@@ -65,6 +98,10 @@ public class SpawnObject : MonoBehaviour {
             {
                 prefab = (GameObject)Resources.Load("Prefabs/DownSign");
                 SpawnSign(prefab, 'S');
+                actions[count] = "downArrow";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
             }
             signCount++;
         }
@@ -74,6 +111,10 @@ public class SpawnObject : MonoBehaviour {
             {
                 prefab = (GameObject)Resources.Load("Prefabs/RightSign");
                 SpawnSign(prefab, 'D');
+                actions[count] = "rightArrow";
+                time[count] = elapsedTime;
+                Debug.Log(actions[count] + " at " + time[count]);
+                count++;
             }
             signCount++;
         }
@@ -129,3 +170,4 @@ public class SpawnObject : MonoBehaviour {
         }
     }
 }
+
