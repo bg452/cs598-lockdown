@@ -8,17 +8,23 @@ public class lastLevelController : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public GameObject statusPanel;
+    public GameObject timer;
+
+    private float elapsedTime;
 
     public void Start()
     {
         Time.timeScale = 1;
+        elapsedTime = Time.deltaTime;
         gameOverPanel.SetActive(false);
         statusPanel.SetActive(true);
+        timer.SetActive(false);
         EnemyAI.playerWin = false;
     }
 
     private void Update()
     {
+        elapsedTime += Time.deltaTime;
         if (detectCollision.hasCollision)
         {
             endGame(false);
@@ -31,6 +37,7 @@ public class lastLevelController : MonoBehaviour
 
     private void endGame(bool playerWin)
     {
+        displayElapsedTime();
         Time.timeScale = 0;
         Destroy(GameObject.Find("Spawner"));
         gameOverPanel.SetActive(true);
@@ -56,5 +63,13 @@ public class lastLevelController : MonoBehaviour
         statusPanel.SetActive(false);
 
         SceneManager.LoadScene("Start");
+    }
+
+    private void displayElapsedTime()
+    {
+        string minutes = Mathf.Floor(elapsedTime / 60).ToString("00");
+        string seconds = (elapsedTime % 60).ToString("00");
+        timer.SetActive(true);
+        GameObject.Find("TimerText").GetComponent<Text>().text = "Elapsed time: " + minutes + ":" + seconds;
     }
 }

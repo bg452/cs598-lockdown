@@ -8,15 +8,21 @@ public class gameController : MonoBehaviour {
     public GameObject gameOverPanel;
     public GameObject nextLevelPanel;
     public GameObject statusPanel;
+    public GameObject timer;
+
+    private float elapsedTime;
 
     public void Start() {
         Time.timeScale = 1;
+        elapsedTime = Time.deltaTime;
         gameOverPanel.SetActive(false);
         nextLevelPanel.SetActive(false);
         statusPanel.SetActive(true);
+        timer.SetActive(false);
     }
 
     private void Update() {
+        elapsedTime += Time.deltaTime;
         if (detectCollision.hasCollision) {
             endGame(false);
         } else if (EnemyAI.playerWin == true) {
@@ -25,6 +31,7 @@ public class gameController : MonoBehaviour {
     }
 
     private void endGame(bool playerWin) {
+        displayElapsedTime();
         int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
         Time.timeScale = 0;
         Destroy(GameObject.Find("Spawner"));
@@ -58,4 +65,13 @@ public class gameController : MonoBehaviour {
        
         SceneManager.LoadScene("Start");
     }
+
+    private void displayElapsedTime()
+    {
+        string minutes = Mathf.Floor(elapsedTime / 60).ToString("00");
+        string seconds = (elapsedTime % 60).ToString("00");
+        timer.SetActive(true);
+        GameObject.Find("TimerText").GetComponent<Text>().text = "Elapsed time: " + minutes + ":" + seconds;
+    }
+
 }
