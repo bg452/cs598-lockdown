@@ -17,7 +17,11 @@ public class AlarmTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Civilian") {
+            // Add points to score for each civilian that enters the alarm
+            gameController.increaseScore(10);
             other.GetComponent<moveToSafetyZone>().panic();
+        } else if (other.tag == "Enemy") {
+            other.GetComponent<EnemyAI>().alarm();
         }
     }
 }

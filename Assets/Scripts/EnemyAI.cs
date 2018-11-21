@@ -67,4 +67,8 @@ public class EnemyAI : MonoBehaviour {
 
         return closest;
     }
+
+    public void alarm () {
+        GetComponent<NavMeshAgent>().speed = 3.75f;
+    }
 }

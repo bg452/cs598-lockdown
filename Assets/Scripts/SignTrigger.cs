@@ -17,6 +17,9 @@ public class SignTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Civilian") {
+            // Add points to score for each civilian that enters the sign
+            gameController.increaseScore(20);
+
             int xOffset = 0;
             int zOffset = 0;
             if (sign.tag == "UpSign") {
