@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class gameController : MonoBehaviour {
     public GameObject gameOverPanel;
@@ -13,6 +14,7 @@ public class gameController : MonoBehaviour {
     public static int score = 0;
 
     private float elapsedTime;
+    private int levelComplete = 0;
 
     public void Start() {
         Time.timeScale = 1;
@@ -43,6 +45,7 @@ public class gameController : MonoBehaviour {
             GameObject.Find("GameOverText").GetComponent<Text>().text = "Game Over!";
         } else {
             nextLevelPanel.SetActive(true);
+            levelComplete++;
         }
         EnemyAI.playerWin = false;
     }
@@ -77,6 +80,21 @@ public class gameController : MonoBehaviour {
         string seconds = (elapsedTime % 60).ToString("00");
         timer.SetActive(true);
         GameObject.Find("TimerText").GetComponent<Text>().text = "Elapsed time: " + minutes + ":" + seconds;
+        // Add text for time bonus (bonus score points for quickly beating the level)
+        if (minutes == "00" && levelComplete == 1) {
+            int s = Int32.Parse(seconds);
+            if (s < 10) {
+                increaseScore(100);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +100";
+            } else if (s < 20) {
+                increaseScore(50);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +50";
+            } else if (s < 30) {
+                increaseScore(10);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +10";
+            }
+        }
+
     }
     public float getTime() {
         return elapsedTime;
