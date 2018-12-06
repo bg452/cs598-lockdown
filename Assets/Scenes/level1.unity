@@ -457,7 +457,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 250, y: -40}
+  m_AnchoredPosition: {x: 250, y: -50}
   m_SizeDelta: {x: 180, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142521589
@@ -693,7 +693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213607154
@@ -1435,7 +1435,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100006, guid: f91b4d863b973224cadf6a673f389fa7, type: 3}
+  - {fileID: 2100000, guid: 866f7a84824d141dbbe50dd1893207d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1516,7 +1516,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 7a4e3fc5fffd662489ba1e3366835324, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100038, guid: fd6bf8e92aca9d14cbed5b48ef2eec6b, type: 3}
+      objectReference: {fileID: 2100000, guid: f4abcb290251940948a31b349a6f9995, type: 2}
     - target: {fileID: 100000, guid: 7a4e3fc5fffd662489ba1e3366835324, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967263
@@ -2311,7 +2311,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100272, guid: f91b4d863b973224cadf6a673f389fa7, type: 3}
+  - {fileID: 2100000, guid: 5cfafc0a2c7ae4dd58cb312c821d3cfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
