@@ -80,18 +80,19 @@ public class gameController : MonoBehaviour {
         string seconds = (elapsedTime % 60).ToString("00");
         timer.SetActive(true);
         GameObject.Find("TimerText").GetComponent<Text>().text = "Elapsed time: " + minutes + ":" + seconds;
-        // Add text for time bonus (bonus score points for quickly beating the level)
+        // Add text for time bonus (bonus score points for quickly beating the level + scales as you progress)
         if (minutes == "00" && levelComplete == 1) {
             int s = Int32.Parse(seconds);
+            int currLevel = SceneManager.GetActiveScene().buildIndex;
             if (s < 10) {
-                increaseScore(100);
-                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +100";
+                increaseScore(50 * currLevel);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +" + (50 * currLevel);
             } else if (s < 20) {
-                increaseScore(50);
-                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +50";
+                increaseScore(20 * currLevel);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +" + (20 * currLevel);
             } else if (s < 30) {
-                increaseScore(10);
-                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +10";
+                increaseScore(10 * currLevel);
+                GameObject.Find("TimeBonusText").GetComponent<Text>().text = "Time bonus: +" + (10 * currLevel);
             }
         }
 
